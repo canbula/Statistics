@@ -1,4 +1,4 @@
-# Statistixs
+# Statistics
 Repository for Statistics course given by Assoc. Prof. Dr. Bora Canbula 
 at Computer Engineering Department of Manisa Celal Bayar University.
 
