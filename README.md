@@ -16,6 +16,8 @@ At the end of the every chapter, you will also find a Problem Set.
 All announcements of this course will be done via Microsoft Teams. Join the group with the invite code: wn45g9v
 
 # Additional Resources
-- [Introductory Statistics](https://openstax.org/details/books/introductory-statistics) (openstax)
+- Probability and Statistics for Computer Scientists, CRC Press, Michael Baron
+- Introduction to Probability and Statistics, Elsevier, Sheldon M. Ross
+- Probability and Statistics for Engineers and Scientists, Brooks/Cole, A.J. Hayter
 - [Python Documentation](https://docs.python.org/3/)
 - [Python Tutorial](https://docs.python.org/3/tutorial/index.html)
