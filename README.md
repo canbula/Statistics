@@ -23,4 +23,5 @@ All announcements of this course will be done via Microsoft Teams. Join the grou
 - [Python Tutorial](https://docs.python.org/3/tutorial/index.html)
 
 # How to Create a Pull Request
-<video src='how-to-pull-request.mp4'></video>
+https://github.com/canbula/Statistics/assets/5307181/1995892c-6e7b-40ce-be7f-8f16f1aee0e0
+
