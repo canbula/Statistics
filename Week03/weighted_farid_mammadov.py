@@ -1,8 +1,8 @@
 import random
 
-def weighted_srs(data, n, weights, with_replacement):
-    if with_replacement:
-        return random.choices(data, weights=weights, k=n)
+def weighted_srs(data, n, weights=None, with_replacement=False):
+    if with_replacement or weights is not None:
+        randomlist = random.choices(data, k=n, weights=weights)
     else:
-        total_samples = min(len(data), n)
-        return random.sample([random.choices(data, weights=weights, k=1)[0] for _ in range(total_samples)], k=total_samples)
+        randomlist = random.sample(data, min(len(data), n))
+    return randomlist
