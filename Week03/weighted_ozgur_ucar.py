@@ -6,5 +6,3 @@ def weighted_srs(data, n, weights, with_replacement = False):
     else:
         sample = random.sample(population=data, k=n)
     return sample
-
-
