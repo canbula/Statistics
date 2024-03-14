@@ -1,5 +1,6 @@
 import random
-def weighted_random_sample(data, n, weights, with_replacement=False):
+
+def weighted_srs(data, n, weights, with_replacement=False):
     sampled = []
     while len(sampled) < n:
         choice = random.choices(data, weights=weights)[0]
