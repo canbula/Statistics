@@ -1,3 +1,4 @@
+import central_tendency as ct
 def shifted(data):
     mean_value = mean(data)
     median_value = median(data)
