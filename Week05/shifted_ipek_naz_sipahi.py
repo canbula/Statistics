@@ -1,4 +1,3 @@
-import central_tendency
 
 def shifted(first):
     mean = central_tendency.mean(first)
