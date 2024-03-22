@@ -1,10 +1,8 @@
 def shifted(lst):
     mean = sum(lst) / len(lst)
-    sorted_list = sorted(lst)
-    n = len(sorted_list)
-    mid = n // 2
-    if n % 2 == 0:
-        median = (sorted_list[mid - 1] + sorted_list[mid]) / 2
+    mid = len(sorted(lst)) // 2
+    if len(sorted(lst)) % 2 == 0:
+        median = (sorted(lst)[mid - 1] + sorted(lst)[mid]) / 2
     else:
-        median = sorted_list[mid]
+        median = sorted(lst)[mid]
     return abs((mean - median) / median) * 100
