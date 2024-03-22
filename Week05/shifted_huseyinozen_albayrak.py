@@ -5,4 +5,4 @@ def shifted(lst):
         median = (sorted(lst)[mid - 1] + sorted(lst)[mid]) / 2
     else:
         median = sorted(lst)[mid]
-    return abs((mean - median) / median) * 100
+    return abs((mean - median) / mean) * 100
