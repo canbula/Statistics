@@ -1,6 +1,9 @@
-
 def shifted(first):
-    mean = central_tendency.mean(first)
-    median = central_tendency.median(first)
-    result = abs(((mean - median) / mean) * 100) 
+    mean = sum(first) / len(first)
+    n = len(first)
+    if n % 2 == 0:
+        median = (sorted(first)[n//2 - 1] + sorted(first)[n//2]) / 2
+    else:
+        median = sorted(first)[n//2]
+    result = abs(((mean - median) / mean) * 100)
     return result
