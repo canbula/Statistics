@@ -1,8 +1,8 @@
-def shifted(set):
-    if(set.__len__() == 0):
+def shifted(data):
+    if(data.__len__() == 0):
         return None
-    set.sort()
-    xmax = max(median(set), mean(set))
-    xmin = min(median(set), mean(set))
+    data.sort()
+    xmax = max(median(data), mean(data))
+    xmin = min(median(data), mean(data))
     percentage = (xmax - xmin) / xmax * 100
     return percentage
