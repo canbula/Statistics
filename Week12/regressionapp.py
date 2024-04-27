@@ -138,6 +138,8 @@ class RegressionFrame(wx.Frame):
             ax.tick_params(axis="x", colors="white")
             ax.tick_params(axis="y", colors="white")
             ax.title.set_color("white")
+            # set grid color
+            ax.grid(color=(0.25, 0.25, 0.25, 1))
         else:
             ax = self.figure.add_subplot(111)
         ax.set_title(label)
