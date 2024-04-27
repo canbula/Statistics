@@ -13,14 +13,14 @@ class RegressionApp(wx.App):
 
     def OnInit(self):
         self.frame = RegressionFrame(
-            None, title="Linear Regression Tool", size=(800, 600)
+            None, title="Linear Regression Tool", size=(800, 800)
         )
         self.frame.Show()
         return True
 
 
 class RegressionFrame(wx.Frame):
-    def __init__(self, parent, title, size=(800, 600)):
+    def __init__(self, parent, title, size):
         super().__init__(parent, title=title, size=size)
 
         self.init_ui()
@@ -30,6 +30,13 @@ class RegressionFrame(wx.Frame):
     def init_ui(self):
         panel = wx.Panel(self)
         box = wx.BoxSizer(wx.VERTICAL)
+
+        title_label = wx.StaticText(
+            panel, label="Linear Regression Tool", style=wx.ALIGN_CENTER
+        )
+        font = wx.Font(24, wx.DEFAULT, wx.NORMAL, wx.BOLD)
+        title_label.SetFont(font)
+        box.Add(title_label, 0, wx.ALL | wx.EXPAND, 5)
 
         input_panel = wx.Panel(panel)
         # input_panel.SetBackgroundColour(wx.Colour(255, 0, 0))
@@ -68,13 +75,30 @@ class RegressionFrame(wx.Frame):
         # input_box.Fit(input_panel)
         # input_panel.Layout()
 
+        plot_panel = wx.Panel(panel)
+        # plot_panel.SetBackgroundColour(wx.Colour(0, 255, 0))
+        plot_box = wx.BoxSizer(wx.HORIZONTAL)
+
+        self.figure = plt.figure()
+        self.figure.patch.set_facecolor((0, 0, 0, 0))
+        self.canvas = FigureCanvas(plot_panel, -1, self.figure)
+
+        plot_box.Add(self.canvas, 1, wx.ALL | wx.EXPAND, 5)
+
+        plot_panel.SetSizer(plot_box)
+        # plot_box.Fit(plot_panel)
+        # plot_panel.Layout()
+
         box.Add(input_panel, 0, wx.ALL | wx.EXPAND, 5)
+        box.Add(plot_panel, 1, wx.ALL | wx.EXPAND, 5)
 
         panel.SetSizer(box)
         # box.Fit(self)
         # panel.Layout()
         panel.Bind(wx.EVT_SIZE, self.on_size)
         input_panel.Bind(wx.EVT_SIZE, self.on_size_input_panel)
+        # bind the close event
+        self.Bind(wx.EVT_CLOSE, self.on_close)
 
     def on_size_input_panel(self, event):
         print(f"Input Panel Resized to: {event.GetSize()}")
@@ -97,14 +121,40 @@ class RegressionFrame(wx.Frame):
         slope, intercept, r_value, p_value, std_err = stats.linregress(
             x_values, y_values
         )
-        line = f"y = {slope:.2f}x + {intercept:.2f}"
-        r_squared = f"R-squared: {r_value ** 2:.2f}"
+        label = f"y = {intercept:.2f} + {slope:.2f}x  (r^2={r_value ** 2:.2f})"
 
-        plt.plot(x_values, y_values, "o", label="original data")
-        plt.plot(x_values, slope * x_values + intercept, "r", label="fitted line")
-        plt.legend()
-        plt.title(f"Linear Regression\n{line}\n{r_squared}")
-        plt.show()
+        self.figure.clear()
+        system_appearance = wx.SystemSettings.GetAppearance()
+        if system_appearance.IsDark():
+            self.figure.patch.set_facecolor((0, 0, 0, 0))
+            ax = self.figure.add_subplot(111)
+            ax.patch.set_facecolor((0, 0, 0, 0))
+            ax.spines["bottom"].set_color("white")
+            ax.spines["top"].set_color("white")
+            ax.spines["left"].set_color("white")
+            ax.spines["right"].set_color("white")
+            ax.xaxis.label.set_color("white")
+            ax.yaxis.label.set_color("white")
+            ax.tick_params(axis="x", colors="white")
+            ax.tick_params(axis="y", colors="white")
+            ax.title.set_color("white")
+        else:
+            ax = self.figure.add_subplot(111)
+        ax.set_title(label)
+        ax.set_xlabel("x-values")
+        ax.set_ylabel("y-values")
+        ax.plot(x_values, y_values, "or")
+        ax.plot(
+            x_values,
+            slope * x_values + intercept,
+            "b-",
+        )
+        plt.tight_layout()
+        self.canvas.draw()
+
+    def on_close(self, event):
+        plt.close(self.figure)
+        self.Destroy()
 
 
 if __name__ == "__main__":
