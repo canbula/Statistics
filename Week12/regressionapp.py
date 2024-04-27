@@ -32,7 +32,8 @@ class RegressionFrame(wx.Frame):
         box = wx.BoxSizer(wx.VERTICAL)
 
         input_panel = wx.Panel(panel)
-        input_box = wx.GridBagSizer(5, 5)
+        # input_panel.SetBackgroundColour(wx.Colour(255, 0, 0))
+        input_box = wx.FlexGridSizer(2, 3, 5, 5)
 
         x_label = wx.StaticText(
             input_panel,
@@ -41,38 +42,69 @@ class RegressionFrame(wx.Frame):
         )
         self.x_input = wx.TextCtrl(
             input_panel,
-            size=(500, -1),
-            style=wx.TE_PROCESS_ENTER,
+            style=wx.TE_PROCESS_ENTER | wx.EXPAND,
             value="1, 2, 3, 4, 5",
         )
-        y_label = wx.StaticText(
-            input_panel, label="y - Values", style=wx.ALIGN_LEFT, size=(70, 20)
-        )
+        y_label = wx.StaticText(input_panel, label="y - Values", style=wx.ALIGN_LEFT)
         self.y_input = wx.TextCtrl(
             input_panel,
-            size=(500, -1),
             style=wx.TE_PROCESS_ENTER,
             value="1, 4, 9, 16, 25",
         )
+        clear_button = wx.Button(input_panel, label="Clear")
+        clear_button.Bind(wx.EVT_BUTTON, self.on_clear)
+        run_button = wx.Button(input_panel, label="Run")
+        run_button.Bind(wx.EVT_BUTTON, self.on_run)
 
-        # Space |
-        # Label | Input
-        # Space |
-        # Label | Input
-        # Space |
-        input_box.Add(size=(-1, -1), pos=(0, 0))
-        input_box.Add(x_label, pos=(1, 0), flag=wx.EXPAND)
-        input_box.Add(self.x_input, pos=(0, 1), span=(2, 1), flag=wx.EXPAND)
-        input_box.Add(size=(-1, -1), pos=(2, 0), span=(1, 2))
-        input_box.Add(size=(-1, -1), pos=(3, 0))
-        input_box.Add(y_label, pos=(4, 0), flag=wx.EXPAND)
-        input_box.Add(self.y_input, pos=(3, 1), span=(2, 1), flag=wx.EXPAND)
+        input_box.Add(x_label, 0, wx.ALL, 5)
+        input_box.Add(self.x_input, 1, wx.ALL | wx.EXPAND, 0)
+        input_box.Add(clear_button, 0, wx.ALL, 5)
+        input_box.Add(y_label, 0, wx.ALL, 5)
+        input_box.Add(self.y_input, 1, wx.ALL | wx.EXPAND, 0)
+        input_box.Add(run_button, 0, wx.ALL, 5)
+        input_box.AddGrowableCol(1, 1)
 
         input_panel.SetSizer(input_box)
+        # input_box.Fit(input_panel)
+        # input_panel.Layout()
 
         box.Add(input_panel, 0, wx.ALL | wx.EXPAND, 5)
 
         panel.SetSizer(box)
+        # box.Fit(self)
+        # panel.Layout()
+        panel.Bind(wx.EVT_SIZE, self.on_size)
+        input_panel.Bind(wx.EVT_SIZE, self.on_size_input_panel)
+
+    def on_size_input_panel(self, event):
+        print(f"Input Panel Resized to: {event.GetSize()}")
+        event.Skip()
+        self.Refresh()
+
+    def on_size(self, event):
+        print(f"Resized to: {event.GetSize()}")
+        event.Skip()
+        self.Refresh()
+
+    def on_clear(self, event):
+        self.x_input.SetValue("")
+        self.y_input.SetValue("")
+
+    def on_run(self, event):
+        x_values = np.array([float(x) for x in self.x_input.GetValue().split(",")])
+        y_values = np.array([float(y) for y in self.y_input.GetValue().split(",")])
+
+        slope, intercept, r_value, p_value, std_err = stats.linregress(
+            x_values, y_values
+        )
+        line = f"y = {slope:.2f}x + {intercept:.2f}"
+        r_squared = f"R-squared: {r_value ** 2:.2f}"
+
+        plt.plot(x_values, y_values, "o", label="original data")
+        plt.plot(x_values, slope * x_values + intercept, "r", label="fitted line")
+        plt.legend()
+        plt.title(f"Linear Regression\n{line}\n{r_squared}")
+        plt.show()
 
 
 if __name__ == "__main__":
