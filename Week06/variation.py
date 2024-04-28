@@ -26,3 +26,18 @@ def standard_deviation(x):
 def coefficient_of_variation(x):
     """Return the coefficient of variation of x."""
     return standard_deviation(x) / central_tendency.mean(x)
+
+
+if __name__ == "__main__":
+    x = data.x
+    print(f"Data: {x}")
+    print(f"Range: {range(x)}")
+    print(f"Variance: {variance(x)}")
+    print(f"Standard Deviation: {standard_deviation(x)}")
+    print(f"Coefficient of Variation: {coefficient_of_variation(x)}")
+    y = data.y
+    print(f"Data: {y}")
+    print(f"Range: {range(y)}")
+    print(f"Variance: {variance(y)}")
+    print(f"Standard Deviation: {standard_deviation(y)}")
+    print(f"Coefficient of Variation: {coefficient_of_variation(y)}")
