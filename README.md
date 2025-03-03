@@ -13,7 +13,7 @@ In the root folder there is a LectureNotes.pdf file, which is updated weekly aft
 At the end of the every chapter, you will also find some exercises.
 
 # Microsoft Teams
-All announcements of this course will be done via Microsoft Teams. Join the group with the invite code: wn45g9v
+All announcements of this course will be done via Microsoft Teams. Join the group with the invite code: v4dxmos
 
 # Additional Resources
 - Probability and Statistics for Computer Scientists, CRC Press, Michael Baron
