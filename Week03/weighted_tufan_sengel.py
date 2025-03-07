@@ -7,5 +7,4 @@ def weighted_srs(data, n, weights, with_replacement = False):
     else:
         sample = random.sample(data, n)
 
-    return sample    
-        
+    return sample            
