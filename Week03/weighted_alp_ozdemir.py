@@ -2,11 +2,9 @@
 import random 
 
 
+def weighted_srs(data,n,weights,with_replacement=False):
 
-def weighted_srs(data,n,weights,with_replacement:bool):
-
-    if(with_replacement):
+    if(with_replacement == True and weights != None):
         return random.choices(data,weights=weights,k=n)
-    else:
-        return random.sample(data,n)
+    return random.sample(data,n)
 
