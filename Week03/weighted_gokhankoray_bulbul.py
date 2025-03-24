@@ -1,9 +1,9 @@
 import random
 
 def weighted_srs(data, n, weights, with_replacement):
-  Sample = []
+  sample = []
   if (with_replacement):
-    Sample = random.choices(data, weights, k=n)
+    sample = random.choices(data, weights, k=n)
   else:
-    Sample = random.sample(data, n, counts=weights)
-  return Sample
+    sample = random.sample(data, n, counts=weights)
+  return sample
