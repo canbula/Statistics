@@ -1,5 +1,5 @@
 import random
-def weighted_srs(data, n, weights, with_replacement):
+def weighted_srs(data, n, weights, with_replacement = False):
     weighted_data = [] # Weighted list of data
     a = 0
     for x in data:
