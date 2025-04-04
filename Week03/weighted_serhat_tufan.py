@@ -1,5 +1,5 @@
 import random
-def weighted_srs(data=data,n=n,weights=weights,with_replacement=True):
+def weighted_srs(data=data,n=3,weights=weights,with_replacement=True):
     if(with_replacement):
         return random.choices(population=data,weights=weights,k=n)
     else:
