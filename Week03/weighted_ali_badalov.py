@@ -1,7 +1,10 @@
 import random
-
 def weighted_srs(data, n, weights, with_replacement = False):
-    if(with_replacement == True or weights != None): #Check if we are using replacement or not
-        return random.choices(data, weights, k=n)
+    if len(data) != len(weights):
+        raise ValueError
+    if with_replacement:
+        return random.choices(data, weights=weights, k=n)
     else:
-        return random.sample(data, n)
+        if n > len(data):
+            raise ValueError
+        return random.sample(data, k=n)
