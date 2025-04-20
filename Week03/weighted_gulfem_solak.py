@@ -6,4 +6,3 @@ def weighted_srs(data,n,weights,with_replacement=True):
     else:
         return random.sample(data, n)
         
-print(weighted_srs(data,n,weights,True))
