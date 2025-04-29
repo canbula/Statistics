@@ -1,9 +1,8 @@
-import statistics
-
 def shifted(data):
-    
-    mean = statistics.mean(data)
-    median = statistics.median(data)
-    shifted_ratio = int((abs(mean - median) / abs(mean))  * 100)
-    
-    return shifted_ratio
+    n = len(data)
+    mean = int(sum(data) / n)
+    if n % 2 == 1:
+        median = data[int(n + 1 / 2 - 1)]
+    median = int(data[int((n / 2) - 1)] + data[int(n / 2)] / 2)
+    result = int(abs((mean - median) / mean) * 100)
+    return result
