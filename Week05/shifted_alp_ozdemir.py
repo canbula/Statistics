@@ -7,5 +7,3 @@ def shifted(data):
     shifted_ratio = int((abs(mean - median) / mean)  * 100)
     
     return shifted_ratio
-
-
