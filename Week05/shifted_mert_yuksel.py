@@ -1,14 +1,9 @@
-def shifted(x):
-
-    n = len(x)
-
-    x_bar = sum(x) / n
-
+def shifted(data):
+    data = [abs(element) for element in data]
+    n = len(data)
+    mean = sum(data) / n
     if n % 2 == 1:
-        x_tilde = x[int((n + 1) / 2 - 1)]
+        median = data[int((n + 1) / 2 - 1)]
     else:
-        x_tilde = (x[int((n / 2) - 1)] + x[int(n / 2)]) / 2
-
-    diff = abs(x_bar - x_tilde)
-
-    return int(diff * 100) 
+        median = (data[int((n / 2) - 1)] + data[int(n / 2)]) / 2
+    return int((abs(mean - median) / mean) * 100) 
