@@ -1,6 +1,6 @@
 import random
-def weighted_srs(data , n , weights , with_replacement=True):
-    if with_replacement == True and weights is not None:
-      return  random.choices (data , weights = weights , k=n) 
+def weighted_srs(data , n , weights , with_replacement = False):
+    if with_replacement == True and wight is not none:
+        return.choices(data , n , weights = weights)
     else:
-       return random.sample(data , n)
+        return random.sample(data , n )
