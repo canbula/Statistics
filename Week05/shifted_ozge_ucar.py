@@ -9,4 +9,3 @@ def shifted(data):
     else:
         median = (sorted_data[i // 2 - 1] + data[i // 2]) / 2
     return (mean - median)
-data= [33,45,45,46,47,56,57,58,62]
