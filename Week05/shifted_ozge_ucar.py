@@ -1,0 +1,11 @@
+def shifted(data):
+    if not data:
+        return None
+    mean = sum(data)/len(data)
+    sorted_data = sorted(data)
+    i = len(sorted_data)
+    if i % 2 == 1:
+        median = sorted_data[(i + 1) // 2 - 1]
+    else:
+        median = (sorted_data[i // 2 - 1] + data[i // 2]) / 2
+    return (mean - median)
