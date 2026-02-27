@@ -1,2 +1,2 @@
-Student id="230316068"
-Fullname="Gülçin Gündüz"
+student id="230316068"
+full_name="Gülçin Gündüz"
