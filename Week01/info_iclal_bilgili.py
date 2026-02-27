@@ -1,2 +1,2 @@
 student_id = "230315038"
-name = "Zeynep İclal Bilgili"
+full_name = "Zeynep İclal Bilgili"
