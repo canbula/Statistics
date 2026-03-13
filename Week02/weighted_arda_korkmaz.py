@@ -1,5 +1,5 @@
 import random
-def weighted_srs(data, n, weights, with_replacement):
+def weighted_srs(data, n, weights, with_replacement=True):
   result = []
   for i in range(n):
     idx = data.index(random.choices(data, weights=weights, k=1)[0])
