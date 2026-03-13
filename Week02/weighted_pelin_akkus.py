@@ -1,4 +1,5 @@
 import random
+
 def weighted_srs(data,n,weights,with_replacement):
     d,w,r=data[:],weights[:],[]   # copies the list so original data is not modified.
     for _ in range(n):
