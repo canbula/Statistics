@@ -8,4 +8,3 @@ def weighted_srs(data, n, weights, with_replacement):
         res.append(d.pop(idx))
         w.pop(idx)
     return res result
-   
