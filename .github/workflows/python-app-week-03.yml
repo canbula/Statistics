@@ -5,10 +5,10 @@ name: Week03 Homework
 
 on:
   push:
-    branches: ["main"]
+    branches: ["master"]
     paths: ["Week03/**"]
   pull_request:
-    branches: ["main"]
+    branches: ["master"]
     paths: ["Week03/**"]
 
 permissions:
