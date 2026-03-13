@@ -5,7 +5,7 @@ def weighted_srs(data, n, weights, with_replacement=False):
         return random.choices(data, weights=weights, k=n)
     
     res, d, w = [], list(data), list(weights)
-    for _ in range(n):
+     for _ in range(n):
         idx = random.choices(range(len(d)), weights=w, k=1)[0]
         res.append(d.pop(idx))
         w.pop(idx)
