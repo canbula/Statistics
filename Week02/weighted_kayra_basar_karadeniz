@@ -1,8 +1,8 @@
 import random
 def weighted_srs(data, n, weights, with_replacement=False):
-    sonuc, d_copy, w_copy = [], list(data), list(weights) if weights else [1]*len(data)
+    alz, veriler, xy = [], list(data), list(weights) if weights else [1]*len(data)
     for _ in range(n):
-        idx = random.choices(range(len(d_copy)), weights=w_copy)[0]
-        sonuc.append(d_copy[idx] if with_replacement else d_copy.pop(idx))
-        if not with_replacement: w_copy.pop(idx)
-    return sonuc
+        idx = random.choices(range(len(veriler)), weights=xy)[0]
+        alz.append(veriler[idx] if with_replacement else veriler.pop(idx))
+        if not with_replacement: xy.pop(idx)
+    return alz
