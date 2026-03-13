@@ -5,5 +5,6 @@ def weighted_srs(data, n, weights, with_replacement=False):
     if with_replacement:
         return random.choices(data, weights=weights, k=n)
     else:
-        return random.sample(data, n, weights=weights)
+        return random.choice(data, weights=None, k=n)
+        
     
