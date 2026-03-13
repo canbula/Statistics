@@ -1,10 +1,10 @@
 import random
-def weighted_srs(data, n, weights, with_replacement):
-    if with_replacement:
-        return random.choices(data, weights=weights, k=n)
-    sample=[]     #for picking without replacement
-    d=data[:]; w=weights[:]
-    for _ in range(n):   #we need to pick n items in total
-        x=random.choices(d, weights=w, k=1)[0]   #grab just 1 item based on the current weights
-        i=d.index(x); sample.append(x); d.pop(i); w.pop(i)   #find it, add to our sample, and pop it out so it doesn't get picked again
+
+def weighted_srs(data, n, weights, *, with_replacement=False):
+    if with_replacement: return random.choices(data, weights=weights, k=n) #easy path if replacement is on
+    d, w, sample = data[:], weights[:], [] #we make copies so we don't mess up the original data
+    for _ in range(n):
+        i = d.index(random.choices(d, weights=w)[0]) #pick one based on weights and find its index
+        sample.append(d.pop(i)) #put it in the sample list remove from data
+        w.pop(i) #remove the matching weight so we don't break the balance
     return sample
