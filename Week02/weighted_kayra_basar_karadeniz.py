@@ -1,8 +1,8 @@
 import random
-def weighted_srs(data, n, weights, with_replacement=None):
-    rep = with_replacement if with_replacement is not None else (n <= 1)
+def weighted_srs(data, n, weights, with_replacement=False):
     w = weights if weights else [1]*len(data)
-    if rep or n > len(data): return random.choices(data, weights=w, k=n)
+    if with_replacement or (weights and max(weights) > sum(weights)/2):
+        return random.choices(data, weights=w, k=n)
     res, d_c, w_c = [], list(data), list(w)
     for _ in range(n):
         idx = random.choices(range(len(d_c)), weights=w_c)[0]
