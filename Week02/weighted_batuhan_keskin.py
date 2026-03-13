@@ -1,5 +1,4 @@
 import random
-
 def weighted_srs(data, n, weights, *, with_replacement=False):
     if with_replacement: return random.choices(data, weights=weights, k=n) #easy path if replacement is on
     d, w, sample = data[:], weights[:], [] #we make copies so we don't mess up the original data
