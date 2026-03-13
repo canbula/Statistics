@@ -1,4 +1,4 @@
-import random
+import random 
 def weighted_srs(data,n,weights,with_replacement):
     res=[]
     d=list(data); w=list(weights)
