@@ -1,6 +1,6 @@
 import random
-def weighted_srs(data, n, weights, *, with_replacement=False):
-    w = [1] * len(data) if not weights else weights[:]
+def weighted_srs(data, n, weights=None, with_replacement=False):
+    w = [1] * len(data) if weights is None else weights[:]
     sample = []
     for _ in range(n):
         r = random.uniform(0, sum(w))
