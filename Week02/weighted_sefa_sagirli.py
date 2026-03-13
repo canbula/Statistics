@@ -1,7 +1,7 @@
 import random 
 def weighted_srs(data, n, weights, with_replacement):
   if with_replacement == True: return random.choices(data, weights=weights, k=n)
-    newList = list(weights)
+  newList = list(weights)
 result = []
 for i in range(n):
   chosen_index = random.choices(range(len(data)), weigths = newList, k=1)[0] 
