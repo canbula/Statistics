@@ -1,5 +1,4 @@
 import random
-
 def weighted_srs(data, n, weights, *, with_replacement=False):
     w = [1] * len(data) if not weights else weights[:]
     sample = []
