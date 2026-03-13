@@ -1,8 +1,0 @@
-import random
-def weighted_srs(data, n, weights, with_replacement=False):
-    alz, veriler, xy = [], list(data), list(weights) if weights else [1]*len(data)
-    for _ in range(n):
-        idx = random.choices(range(len(veriler)), weights=xy)[0]
-        alz.append(veriler[idx] if with_replacement else veriler.pop(idx))
-        if not with_replacement: xy.pop(idx)
-    return alz
