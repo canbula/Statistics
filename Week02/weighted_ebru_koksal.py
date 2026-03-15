@@ -7,4 +7,4 @@ def weighted_srs(data,n,weights,with_replacement=False):
     i=random.choices(range(len(pool)),weights=w,k=1)[0] if w else random.randrange(len(pool))
     res.append(pool.pop(i))
     if w:w.pop(i)
-return res
+  return res
