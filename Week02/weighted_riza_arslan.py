@@ -7,4 +7,4 @@ def weighted_srs(data, n, weights, with_replacement=False):
         return random.choices(data, weights=w, k=n)
     res, d_c = [], list(data)
     for _ in range(n): res.append(d_c.pop(random.randrange(len(d_c))))
-    return res:
+    return res
