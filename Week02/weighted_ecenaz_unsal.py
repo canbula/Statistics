@@ -1,5 +1,5 @@
 import random
-def weighted_srs(data,n,weights,*,with_replacement=False):
+def weighted_srs(data,n,weights,with_replacement=False):
     if weights: return random.choices(data,weights=weights,k=n)
     result=[]; d=list(data)
     for _ in range(n):
