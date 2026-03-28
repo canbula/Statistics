@@ -1,5 +1,5 @@
 import random
-def weighted_srs(data, n, weights, *, with_replacement):
+def weighted_srs(data, n, weights, with_replacement):
     if not with_replacement and n > len(data): return None
     sample, d, w = [], list(data), list(weights)
     for _ in range(n):
