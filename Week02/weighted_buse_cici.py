@@ -1,6 +1,6 @@
 import random
 def weighted_srs(data, n, weights, with_replacement=True):
-    _sample, _data, _weights = [], list(data), list(weights)
+    sample, _data, _weights = [], list(data), list(weights)
     for _ in range(n):
         choise = random.choices(_data, weights=_weights, k=1)[0]
         sample.append(choise)
