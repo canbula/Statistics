@@ -1,0 +1,8 @@
+def shifted(data):
+    data.sort()
+    n = len(data)
+    mean = sum(data) / n
+    if n%2==1: median = data[n//2]
+    else : median = (data[(n-1)//2]+data[n//2]) / 2
+    differencePercentage =abs( ((mean - median) / mean) * 100)
+    return (differencePercentage)
