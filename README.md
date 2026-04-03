@@ -1,6 +1,6 @@
 # Statistics
 Repository for Statistics course given by Assoc. Prof. Dr. Bora Canbula 
-at Computer Engineering Department of Manisa Celal Bayar University.
+at Computer Engineering Department of Manisa Celal Bayar University (MCBU).
 
 # Course Information
 We are going to learn both the mathematical foundations and real-world applications of the statistics and the probability in this course. Focus of this course will be to provide the required background for a data science / machine learning course. Python is preferred as the programming language for the applications of this course.
