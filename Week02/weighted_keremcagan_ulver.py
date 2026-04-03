@@ -1,9 +1,6 @@
-import random
+import statistics
 
-def weighted_srs(data, n, weights, with_replacement=False):
-    if with_replacement: return random.choices(data, weights=weights, k=n)
-    res, temp_w = [], list(weights)
-    for _ in range(n):
-        i = random.choices(range(len(data)), weights=temp_w)[0]
-        res.append(data[i]); temp_w[i] = 0
-    return res
+def shifted(data):
+    mean = statistics.mean(data)
+    median = statistics.median(data)
+    return abs(mean - median) / abs(mean) * 100 if mean != 0 else 0
