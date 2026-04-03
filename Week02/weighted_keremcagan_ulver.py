@@ -1,6 +1,8 @@
 import statistics
-
-def shifted(data):
-    mean = statistics.mean(data)
-    median = statistics.median(data)
-    return abs(mean - median) / abs(mean) * 100 if mean != 0 else 0
+def weighted_srs(data, n, weights, with_replacement=False):
+    if weights is None:
+        return random.choices(data, k=n) if with_replacement else random.sample(data, n)
+    if with_replacement:
+        return random.choices(data, weights=weights, k=n)
+    population = sum([[d]*w for d, w in zip(data, weights)], [])
+    return random.sample(population, n)
