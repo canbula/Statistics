@@ -9,7 +9,7 @@ import os
 import inspect
 
 
-files = [f for f in os.listdir(os.path.dirname(__file__)) if f.startswith("weighted")]
+files = [f for f in os.listdir(os.path.dirname(__file__)) if f.startswith("mustafaenes")]
 for f in files:
     exec("import " + f[:-3] + " as " + f[:-3])
 
