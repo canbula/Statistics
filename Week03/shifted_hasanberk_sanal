@@ -1,0 +1,10 @@
+def shifted(sample):
+    sample_sorted = sorted(sample)
+    n = len(sample)
+    
+    # Calculation of Mean and Median
+    mean = sum(sample) / n
+    median = (sample_sorted[n//2] if n % 2 != 0 
+              else (sample_sorted[n//2 - 1] + sample_sorted[n//2]) / 2)
+    
+    return abs((mean - median) / median) * 100
